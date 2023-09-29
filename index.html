@@ -91,25 +91,43 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" href="./assets/css/reponsive.css" />
   </head>
   <body>
-    <!-- Fixed header -->
+    <!-- PC header -->
     <header class="fixed-header">
       <div class="content">
         <!-- navbar -->
         <nav class="navbar">
+          <!-- Tablet/mobile menu -->
+          <label for="menu-checkbox" class="toogle-menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+              />
+            </svg>
+          </label>
           <!-- Logo -->
-          <a href="#">
+          <a href="#" class="logo">
             <img src="./assets/img/logo.svg" alt="Besnik." />
           </a>
 
           <!-- Navigation -->
-          <ul>
+          <ul id="pc-nav">
             <li><a href="#">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#resources">Resources</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li class="show-on-mobile separate"><a href="#!">Sign in</a></li>
+            <li class="show-on-mobile"><a href="#!">Sign up</a></li>
           </ul>
 
           <!-- Action -->
@@ -118,6 +136,39 @@
             <a href="#!" class="btn action-btn">Sign up</a>
           </div>
         </nav>
+      </div>
+    </header>
+
+    <!-- Tablet/mobile header -->
+    <header class="mobile-header">
+      <input
+        type="checkbox"
+        name="menu-checkbox"
+        id="menu-checkbox"
+        class="menu-checkbox"
+        hidden
+      />
+
+      <!-- Overlay -->
+      <label for="menu-checkbox" class="menu-overlay"></label>
+
+      <!-- Menu content -->
+      <div class="menu-drawer">
+        <a href="#">
+          <img src="./assets/img/logo.svg" alt="Besnik." />
+        </a>
+
+        <!-- Navigation -->
+        <ul id="mobile-nav"></ul>
+
+        <!-- Đoạn js này dùng để khi sửa thanh nav 1 lần thì tất cả các thiết bị còn lại đều sẽ ăn theo -->
+        <script>
+          const pcNav = document.querySelector("#pc-nav");
+          const mobileNav = document.querySelector("#mobile-nav");
+
+          // Copy from PC nav -> Mobile nav
+          mobileNav.innerHTML = pcNav.innerHTML;
+        </script>
       </div>
     </header>
 
